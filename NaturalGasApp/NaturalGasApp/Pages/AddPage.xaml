@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
+             xmlns:controls="clr-namespace:NaturalGasApp.Controls"
+             x:Class="NaturalGasApp.Pages.AddPage"
+             x:DataType="viewmodels:AddViewModel">
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Grid
+            ColumnDefinitions="*, 0.5*, 0.5*">
+            <Label
+                Text="Обрати місяць та рік"
+                VerticalTextAlignment="Center"/>
+            <Picker
+                Grid.Column="1"
+                Title="Місяць"
+                ItemsSource="{Binding Months}"
+                SelectedItem="{Binding SelectedMonth}"/>
+
+            <Picker
+                Grid.Column="2"
+                Title="Рік"
+                ItemsSource="{Binding Years}"
+                SelectedItem="{Binding SelectedYear}"/>
+        </Grid>
+        
+        <Label
+            Text="Спожито"/>
+        <controls:NumberBox
+            Value="{Binding CubicMeterConsumed, Mode=TwoWay}"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"/>
+        
+        <Label
+            Text="Ціна за м³"/>
+        <controls:NumberBox
+            Value="{Binding CubicMeterPrice, Mode=TwoWay}"
+            Minimum="0.01"
+            Maximum="100"
+            Increment=".01"/>
+        
+        <Button
+            Margin="0,10,0,0"
+            HorizontalOptions="End"
+            WidthRequest="150"
+            Text="Додати запис"
+            Command="{Binding AddCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

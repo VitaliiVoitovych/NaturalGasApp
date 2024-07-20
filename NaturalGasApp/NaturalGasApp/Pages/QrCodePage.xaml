@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
+             x:Class="NaturalGasApp.Pages.QrCodePage"
+             x:DataType="viewmodels:QrCodeViewModel"
+             Shell.PresentationMode="ModalAnimated">
+    <Grid
+        RowDefinitions="Auto, *">
+        
+        <ImageButton
+            HorizontalOptions="Start"
+            Source="left_arrow.png"
+            HeightRequest="32"
+            WidthRequest="32"
+            Margin="10,12,0,0"
+            Command="{Binding GoToBackCommand}"/>
+        
+        <VerticalStackLayout
+            Grid.Row="1"
+            VerticalOptions="Center"
+            Padding="10"
+            Spacing="10">
+            
+            <Label
+                Text="Поділитися застосунком"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+            
+            <Image
+                Source="{Binding QrCode}"
+                WidthRequest="250"
+                HeightRequest="250"/>
+            
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

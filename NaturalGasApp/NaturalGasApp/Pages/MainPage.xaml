@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
+             xmlns:views="clr-namespace:NaturalGasApp.Views"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             x:DataType="viewmodels:MainViewModel"
+             x:Class="NaturalGasApp.Pages.MainPage">
+    <Grid>
+        <ScrollView
+            Margin="15, 5">
+            <Grid
+                RowDefinitions="*,*"
+                RowSpacing="15">
+                
+                <views:ChartContainerView
+                    x:Name="AmountToPayChart"
+                    Text="До оплати"
+                    AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
+                    Series="{Binding ChartsService.AmountsToPaySeries}"
+                    XAxes="{Binding ChartsService.DateXAxes}"
+                    YAxes="{Binding ChartsService.AmountToPayYAxes}"/>
+
+                <views:ChartContainerView
+                    x:Name="CubicMeterConsumedChart"
+                    Grid.Row="1"
+                    Text="Споживання"
+                    AverageValue="{Binding NotesService.AverageCubicMeterConsumed, StringFormat='{0:F2} м³'}"
+                    Series="{Binding ChartsService.CubicMeterConsumedSeries}"
+                    XAxes="{Binding ChartsService.DateXAxes}"
+                    YAxes="{Binding ChartsService.CubicMeterConsumedYAxes}"
+                    LegendPosition="Top"
+                    LegendTextPaint="{Binding ChartsService.LegendTextPaint}"/>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

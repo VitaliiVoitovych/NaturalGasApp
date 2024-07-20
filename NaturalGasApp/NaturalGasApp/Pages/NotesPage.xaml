@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
+             xmlns:models="clr-namespace:NaturalGasApp.Models"
+             x:Class="NaturalGasApp.Pages.NotesPage"
+             x:DataType="viewmodels:NotesViewModel"
+             x:Name="Notes">
+    <Grid
+        Margin="15,7,15,0"
+        RowDefinitions="Auto, *"
+        RowSpacing="10">
+
+        <Grid>
+            <ImageButton
+                HorizontalOptions="Start"
+                Source="qr_code.png"
+                HeightRequest="24"
+                WidthRequest="24"
+                Command="{Binding GoToQrCodeCommand}"/>
+            
+            <HorizontalStackLayout
+                HorizontalOptions="End"
+                Spacing="10">
+
+                <ImageButton
+                    Source="upload.png"
+                    HeightRequest="24"
+                    WidthRequest="24"
+                    Command="{Binding ExportDataCommand}"/>
+
+                <ImageButton
+                    Source="load.png"
+                    HeightRequest="24"
+                    WidthRequest="24"
+                    Command="{Binding ImportDataCommand}"/>
+            
+            </HorizontalStackLayout>
+        </Grid>
+        
+        <ScrollView
+            Grid.Row="1">
+            
+            <CollectionView
+                ItemsSource="{Binding NotesService.NaturalGasConsumptions}">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="12"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NaturalGasConsumption">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem
+                                    IconImageSource="cross.png"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding BindingContext.RemoveCommand, Source={x:Reference Notes}}"
+                                    CommandParameter="{Binding .}"/>
+                            </SwipeView.RightItems>
+                        
+                            <Frame
+                                Background="{StaticResource MediumDark}"
+                                CornerRadius="15"
+                                Padding="10">
+                            
+                                <Grid
+                                    RowDefinitions="Auto, *"
+                                    ColumnDefinitions="*, Auto"
+                                    RowSpacing="5">
+                                    
+                                    <Label
+                                        Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        TextTransform="Uppercase"/>
+                                    <VerticalStackLayout
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        VerticalOptions="Center">
+
+                                        <HorizontalStackLayout
+                                            Padding="2"
+                                            VerticalOptions="Center"
+                                            Spacing="5">
+                                            <Label
+                                                Text="{Binding CubicMeterConsumed,
+                                                        StringFormat='Спожито: {0} м³'}"/>
+                                        </HorizontalStackLayout>
+                                        
+                                    </VerticalStackLayout>
+                                    <Label
+                                        Grid.Column="1"
+                                        Grid.RowSpan="2"
+                                        HorizontalOptions="End"
+                                        VerticalTextAlignment="End"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        Text="{Binding AmountToPay, StringFormat='{0:C2}'}"/>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>
