@@ -50,6 +50,10 @@ public partial class NotesViewModel(NotesService _notesService) : ObservableObje
         {
             await Shell.Current.DisplayAlert("Помилка!", "Ви обрали не файл з даними!", "Зрозуміло");
         }
+        catch (ArgumentException ex)
+        {
+            await Shell.Current.DisplayAlert("Помилка!", ex.Message, "Зрозуміло");
+        }
     }
     
     private async Task<FileResult> PickFileAsync()
@@ -65,6 +69,7 @@ public partial class NotesViewModel(NotesService _notesService) : ObservableObje
         };
 
         var result = await FilePicker.Default.PickAsync(options) ?? throw new FileNotFoundException("Ви не обрали файл!");
+        if (!result.FileName.Equals("naturalgas.json")) throw new ArgumentException($"Ви обрали не файл з даними! {result.FileName}");
         return result;
     }
 
