@@ -20,6 +20,7 @@ public static class MauiProgramExtensions
 			{
 				essentials
 					.AddAppAction("share_app", "Поділитися", icon: "qr_code")
+					.AddAppAction("add_record", "Додати запис", icon: "add_action")
 					.OnAppAction(HandleAppActions);
 			});
 
@@ -48,8 +49,18 @@ public static class MauiProgramExtensions
 	{
 		Application.Current?.Dispatcher.Dispatch(async () =>
 		{
-			await Task.Delay(250);
-			await Shell.Current.GoToAsync($"{nameof(QrCodePage)}", true);
+			if (action.Id == "add_record")
+			{
+				var tabBar = Shell.Current.CurrentItem; // TabBar
+				var addTab = tabBar.Items[^1]; // Add tab is last
+
+				tabBar.CurrentItem = addTab;
+			}
+			else
+			{
+                await Task.Delay(250);
+                await Shell.Current.GoToAsync($"{nameof(QrCodePage)}", true);
+            }
 		});
 	}
 }

@@ -6,9 +6,13 @@
 - .NET 8
 - MAUI 8.0.40
 - LiveCharts2
+- SQLite
 
 ## License
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VitaliiVoitovych/ElectricityApp/blob/master/LICENSE.txt)
+
+## Download
+[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/VitaliiVoitovych/NaturalGasApp/releases)
 
 ### Main
 <img  src="/Images/main.jpg" width="300">
@@ -22,5 +26,5 @@
 ### QrCode Page
 <img src="/Images/qr_code_page.jpg" width="300">
 
-### QrCode App Action
-<img src="/Images/qr_app_action.jpg" width="300">
+### App Actions
+<img src="/Images/app_actions.jpg" width="300">
