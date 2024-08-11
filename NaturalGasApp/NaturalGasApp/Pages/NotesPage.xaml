@@ -15,7 +15,7 @@
         <Grid>
             <ImageButton
                 HorizontalOptions="Start"
-                Source="qr_code.png"
+                Source="qr.png"
                 HeightRequest="24"
                 WidthRequest="24"
                 Command="{Binding GoToQrCodeCommand}"/>

@@ -19,7 +19,7 @@ public static class MauiProgramExtensions
 			.ConfigureEssentials(essentials =>
 			{
 				essentials
-					.AddAppAction("share_app", "Поділитися", icon: "qr_code")
+					.AddAppAction("share_app", "Поділитися", icon: "qr_action")
 					.AddAppAction("add_record", "Додати запис", icon: "add_action")
 					.OnAppAction(HandleAppActions);
 			});

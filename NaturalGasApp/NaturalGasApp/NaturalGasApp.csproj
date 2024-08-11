@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\add_action.svg" />
+	  <None Remove="Resources\Images\qr.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
