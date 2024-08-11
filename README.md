@@ -4,7 +4,7 @@
 
 ## Technologies
 - .NET 8
-- MAUI 8.0.40
+- MAUI 8.0.61
 - LiveCharts2
 - SQLite
 

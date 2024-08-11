@@ -28,7 +28,7 @@
         </Grid>
         
         <Label
-            Text="Спожито"/>
+            Text="Спожито м³"/>
         <controls:NumberBox
             Value="{Binding CubicMeterConsumed, Mode=TwoWay}"
             Minimum="0"

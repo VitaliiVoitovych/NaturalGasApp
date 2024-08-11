@@ -9,7 +9,7 @@
         Padding="10"
         CornerRadius="15"
         Background="Transparent"
-        BorderColor="{StaticResource MediumDark}"
+        BorderColor="{StaticResource LightDark}"
         BindingContext="{Binding Source={x:Reference This}}">
 
         <Grid

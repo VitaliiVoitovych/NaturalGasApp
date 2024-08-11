@@ -10,9 +10,11 @@
     <Color x:Key="Dark">#101623</Color>
     <Color x:Key="MediumDark">#1C2236</Color>
     <Color x:Key="Light">#e2e3ec</Color>
+    <Color x:Key="LightDark">#2c3144</Color>
 
     <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
     <SolidColorBrush x:Key="DarkBrush" Color="{StaticResource Dark}"/>
     <SolidColorBrush x:Key="MediumDarkBrush" Color="{StaticResource MediumDark}"/>
     <SolidColorBrush x:Key="LightBrush" Color="{StaticResource Light}"/>
+    <SolidColorBrush x:Key="LightDarkBrush" Color="{StaticResource LightDark}"/>
 </ResourceDictionary>

@@ -62,7 +62,8 @@
                             </SwipeView.RightItems>
                         
                             <Frame
-                                Background="{StaticResource MediumDark}"
+                                BorderColor="{StaticResource LightDark}"
+                                Background="{StaticResource Dark}"
                                 CornerRadius="15"
                                 Padding="10">
                             
