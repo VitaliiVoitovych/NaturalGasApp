@@ -13,6 +13,8 @@
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+        <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryDark}"/>
+        <Setter Property="Shell.ForegroundColor" Value="{StaticResource Light}"/>
     </Style>
     
     <Style TargetType="ScrollView">

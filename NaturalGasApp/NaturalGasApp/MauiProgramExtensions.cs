@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using NaturalGasApp.EfStructures;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -10,6 +11,7 @@ public static class MauiProgramExtensions
 	{
 		builder
 			.UseSkiaSharp(true)
+			.UseMauiCommunityToolkit()
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{

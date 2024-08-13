@@ -4,43 +4,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
              xmlns:models="clr-namespace:NaturalGasApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="NaturalGasApp.Pages.NotesPage"
              x:DataType="viewmodels:NotesViewModel"
-             x:Name="Notes">
+             x:Name="Notes"
+             Title="Нотатки">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="{StaticResource PrimaryDark}"
+            StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="qr.png"
+            Command="{Binding GoToQrCodeCommand}"/>
+        <ToolbarItem
+            Text="Експорт даних"
+            Order="Secondary"
+            Command="{Binding ExportDataCommand}"/>
+        <ToolbarItem
+            Text="Імпорт даних"
+            Order="Secondary"
+            Command="{Binding ImportDataCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <Grid
-        Margin="15,7,15,0"
-        RowDefinitions="Auto, *"
-        RowSpacing="10">
+        Margin="15,7,15,0">
 
-        <Grid>
-            <ImageButton
-                HorizontalOptions="Start"
-                Source="qr.png"
-                HeightRequest="24"
-                WidthRequest="24"
-                Command="{Binding GoToQrCodeCommand}"/>
-            
-            <HorizontalStackLayout
-                HorizontalOptions="End"
-                Spacing="10">
-
-                <ImageButton
-                    Source="upload.png"
-                    HeightRequest="24"
-                    WidthRequest="24"
-                    Command="{Binding ExportDataCommand}"/>
-
-                <ImageButton
-                    Source="load.png"
-                    HeightRequest="24"
-                    WidthRequest="24"
-                    Command="{Binding ImportDataCommand}"/>
-            
-            </HorizontalStackLayout>
-        </Grid>
-        
-        <ScrollView
-            Grid.Row="1">
+        <ScrollView>
             
             <CollectionView
                 ItemsSource="{Binding NotesService.NaturalGasConsumptions}">

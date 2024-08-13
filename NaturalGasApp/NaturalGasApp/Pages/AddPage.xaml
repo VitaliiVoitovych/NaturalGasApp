@@ -4,8 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
              xmlns:controls="clr-namespace:NaturalGasApp.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="NaturalGasApp.Pages.AddPage"
-             x:DataType="viewmodels:AddViewModel">
+             x:DataType="viewmodels:AddViewModel"
+             Title="Новий запис">
+    
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="{StaticResource PrimaryDark}"
+            StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+    
     <VerticalStackLayout
         HorizontalOptions="Center"
         VerticalOptions="Center">
