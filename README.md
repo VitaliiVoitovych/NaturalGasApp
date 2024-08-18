@@ -7,6 +7,8 @@
 - MAUI 8.0.61
 - LiveCharts2
 - SQLite
+- Community Toolkit(Mvvm, Maui)
+- QRCoder
 
 ## License
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VitaliiVoitovych/ElectricityApp/blob/master/LICENSE.txt)
@@ -23,6 +25,8 @@
 
 ### Add
 <img  src="/Screenshots/add.jpg" width="300">
+<img  src="/Screenshots/add_month_picker.jpg" width="300">
+<img  src="/Screenshots/add_year_picker.jpg" width="300">
 
 ### QrCode Page
 <img src="/Screenshots/qr_code_page.jpg" width="300">
