@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.OS;
 
 namespace NaturalGasApp.Droid;
 
@@ -21,5 +22,12 @@ public class MainActivity : MauiAppCompatActivity
         base.OnNewIntent(intent);
 
         Platform.OnNewIntent(intent);
+    }
+
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+
+        SetTheme(Resource.Style.AppTheme);
     }
 }
