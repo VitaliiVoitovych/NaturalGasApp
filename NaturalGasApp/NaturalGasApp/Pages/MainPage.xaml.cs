@@ -13,5 +13,6 @@ public partial class MainPage : ContentPage
     {
         AmountToPayChart.UpdateChart();
         CubicMeterConsumedChart.UpdateChart();
+        CommunityToolkit.Maui.Core.Platform.StatusBar.SetColor(Color.FromArgb("101623"));
     }
 }

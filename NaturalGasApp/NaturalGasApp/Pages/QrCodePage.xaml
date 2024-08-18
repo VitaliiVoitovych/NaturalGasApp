@@ -11,7 +11,7 @@
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior
             StatusBarColor="{StaticResource PrimaryDark}"
-            StatusBarStyle="DarkContent"/>
+            StatusBarStyle="LightContent"/>
     </ContentPage.Behaviors>
     
     <Grid
