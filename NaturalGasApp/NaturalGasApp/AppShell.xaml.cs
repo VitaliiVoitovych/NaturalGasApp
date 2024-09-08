@@ -13,6 +13,5 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(QrCodePage), typeof(QrCodePage));
 
 		CurrentItem = PhoneTabs;
-		Application.Current!.UserAppTheme = AppTheme.Dark;
 	}
 }
