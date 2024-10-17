@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using NaturalGasApp.EfStructures;
+using NaturalGasApp.Services.Charting;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace NaturalGasApp;

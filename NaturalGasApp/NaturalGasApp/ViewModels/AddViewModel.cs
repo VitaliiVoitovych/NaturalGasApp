@@ -1,6 +1,6 @@
 ﻿namespace NaturalGasApp.ViewModels;
 
-public partial class AddViewModel(NotesService _notesService) : ObservableObject
+public partial class AddViewModel(NotesService notesService) : ObservableObject
 {
     private static readonly Dictionary<string, int> _months = new()
     {
@@ -23,16 +23,16 @@ public partial class AddViewModel(NotesService _notesService) : ObservableObject
     {
         var amountToPay = CubicMeterConsumed * CubicMeterPrice;
 
-        var record = new NaturalGasConsumption(new DateOnly(SelectedYear, _months[SelectedMonth], 1),
+        var consumption = new NaturalGasConsumption(new DateOnly(SelectedYear, _months[SelectedMonth], 1),
             CubicMeterConsumed, amountToPay);
         try
         {
-            await _notesService.AddNoteAsync(record);
+            notesService.AddNote(consumption);
             ChangeMonthAndYear();
         }
-        catch (ArgumentException ex)
+        catch (ArgumentException)
         {
-            await Shell.Current.DisplayAlert("Помилка!", ex.Message, "Зрозуміло");
+            await Shell.Current.DisplayAlert("Помилка!", "Запис про цей місяць вже є", "Зрозуміло");
         }
         
     }
