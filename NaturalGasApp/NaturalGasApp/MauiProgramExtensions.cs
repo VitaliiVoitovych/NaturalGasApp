@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using NaturalGasApp.EfStructures;
 using NaturalGasApp.Services.Charting;
+using NaturalGasApp.Services.Files;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace NaturalGasApp;
@@ -34,7 +35,8 @@ public static class MauiProgramExtensions
 
 		builder.Services.AddSingleton<ChartsService>();
 		builder.Services.AddSingleton<NotesService>();
-		
+		builder.Services.AddSingleton<FileService>();
+
 		builder.Services.AddTransient<MainViewModel>();
 		builder.Services.AddTransient<NotesViewModel>();
 		builder.Services.AddTransient<AddViewModel>();

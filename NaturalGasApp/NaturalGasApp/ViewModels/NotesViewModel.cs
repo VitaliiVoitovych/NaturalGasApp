@@ -1,8 +1,9 @@
-﻿using System.Text.Json;
+﻿using NaturalGasApp.Services.Files;
+using System.Text.Json;
 
 namespace NaturalGasApp.ViewModels;
 
-public partial class NotesViewModel(NotesService notesService) : ObservableObject
+public partial class NotesViewModel(NotesService notesService, FileService fileService) : ObservableObject
 {
     public NotesService NotesService => notesService;
 
@@ -21,16 +22,12 @@ public partial class NotesViewModel(NotesService notesService) : ObservableObjec
     [RelayCommand]
     private async Task ExportData()
     {
-        var filename = "naturalgas.json";
+        var filename = $"naturalgas_{DateTime.UtcNow:dd-MM-yyyy}.json";
         var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
 
-        File.WriteAllText(filePath, JsonSerializer.Serialize(NotesService.NaturalGasConsumptions));
+        await DataExporterImporter.ExportAsync(filePath, NotesService.NaturalGasConsumptions);
 
-        await Share.Default.RequestAsync(new ShareFileRequest
-        {
-            Title = "Вивантажити дані",
-            File = new ShareFile(filePath)
-        });
+        await fileService.ShareFileAsync(filePath);
     }
 
     [RelayCommand]
@@ -38,8 +35,8 @@ public partial class NotesViewModel(NotesService notesService) : ObservableObjec
     {
         try
         {
-            var file = await PickFileAsync();
-            var data = await DeserializeFileAsync(file);
+            var file = await fileService.OpenFileAsync();
+            var data = await DataExporterImporter.ImportAsync(file);
             await NotesService.ImportDataAsync(data);
         }
         catch (FileNotFoundException ex)
@@ -50,32 +47,5 @@ public partial class NotesViewModel(NotesService notesService) : ObservableObjec
         {
             await Shell.Current.DisplayAlert("Помилка!", "Ви обрали не файл з даними!", "Зрозуміло");
         }
-        catch (ArgumentException ex)
-        {
-            await Shell.Current.DisplayAlert("Помилка!", ex.Message, "Зрозуміло");
-        }
-    }
-    
-    private async Task<FileResult> PickFileAsync()
-    {
-        var options = new PickOptions()
-        {
-            PickerTitle = "Виберіть файл з даними (naturalgas.json)",
-            FileTypes = new FilePickerFileType(
-                new Dictionary<DevicePlatform, IEnumerable<string>>
-                {
-                    { DevicePlatform.Android, new[] { "application/json" } }
-                }),
-        };
-
-        var result = await FilePicker.Default.PickAsync(options) ?? throw new FileNotFoundException("Ви не обрали файл!");
-        if (!result.FileName.Equals("naturalgas.json")) throw new ArgumentException($"Ви обрали не файл з даними! {result.FileName}");
-        return result;
-    }
-
-    private async Task<IAsyncEnumerable<NaturalGasConsumption>> DeserializeFileAsync(FileResult file)
-    {
-        var stream = await file.OpenReadAsync();
-        return JsonSerializer.Deserialize<IAsyncEnumerable<NaturalGasConsumption>>(stream)!;
     }
 }
