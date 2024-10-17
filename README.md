@@ -4,7 +4,7 @@
 
 ## Technologies
 - .NET 8
-- MAUI 8.0.61
+- MAUI
 - LiveCharts2
 - SQLite
 - Community Toolkit(Mvvm, Maui)
@@ -14,7 +14,7 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VitaliiVoitovych/ElectricityApp/blob/master/LICENSE.txt)
 
 ## Download
-[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/VitaliiVoitovych/NaturalGasApp/releases)
+[![Download](https://img.shields.io/badge/Download-238636)](https://github.com/VitaliiVoitovych/NaturalGasApp/releases)
 
 ### Main
 <img  src="/Screenshots/main.jpg" width="300">
