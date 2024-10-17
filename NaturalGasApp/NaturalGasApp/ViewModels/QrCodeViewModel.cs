@@ -14,7 +14,7 @@ public partial class QrCodeViewModel : ObservableObject
 
     private static ImageSource CreateQrCode()
     {
-        var version = "1.0.7";
+        var version = "1.0.8";
         var qrGenerator = new QRCodeGenerator();
         var qrCodeData = qrGenerator.CreateQrCode($@"https://github.com/VitaliiVoitovych/NaturalGasApp/releases/download/v{version}/NaturalGasApp-v{version}.apk", QRCodeGenerator.ECCLevel.Q);
 
