@@ -29,7 +29,7 @@
 <img  src="/Screenshots/add_year_picker.jpg" width="300">
 
 ### QrCode Page
-<img src="/Screenshots/qr_code_page.jpg" width="300">
+<img src="/Screenshots/qr_code_popup.jpg" width="300">
 
 ### App Actions
 <img src="/Screenshots/app_actions.jpg" width="300">
