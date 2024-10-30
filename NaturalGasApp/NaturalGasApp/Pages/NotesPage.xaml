@@ -19,7 +19,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             IconImageSource="qr.png"
-            Command="{Binding GoToQrCodeCommand}"/>
+            Command="{Binding ShowQrCodePopupCommand}"/>
         <ToolbarItem
             Text="Експорт даних"
             Order="Secondary"

@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.Logging;
 using NaturalGasApp.EfStructures;
 using NaturalGasApp.Services.Charting;
 using NaturalGasApp.Services.Files;
+using NaturalGasApp.Views.Popups;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace NaturalGasApp;
@@ -40,12 +42,10 @@ public static class MauiProgramExtensions
 		builder.Services.AddTransient<MainViewModel>();
 		builder.Services.AddTransient<NotesViewModel>();
 		builder.Services.AddTransient<AddViewModel>();
-		builder.Services.AddSingleton<QrCodeViewModel>();
 
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<NotesPage>();
 		builder.Services.AddTransient<AddPage>();
-		builder.Services.AddTransient<QrCodePage>();
 		
 		return builder;
 	}
@@ -63,8 +63,8 @@ public static class MauiProgramExtensions
 			}
 			else
 			{
-                await Task.Delay(250);
-                await Shell.Current.GoToAsync($"{nameof(QrCodePage)}", true);
+				var shareQrCodePopup = Popups.GetShareAppQrCodePopup();
+				await Shell.Current.ShowPopupAsync(shareQrCodePopup);
             }
 		});
 	}

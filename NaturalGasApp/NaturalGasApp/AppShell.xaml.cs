@@ -9,8 +9,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
 		CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-Ua");
-		
-		Routing.RegisterRoute(nameof(QrCodePage), typeof(QrCodePage));
 
 		CurrentItem = PhoneTabs;
 	}
