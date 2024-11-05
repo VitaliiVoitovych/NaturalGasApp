@@ -15,8 +15,8 @@ public partial class AddViewModel(NotesService notesService) : ObservableObject
     
     [ObservableProperty] private string _selectedMonth = _months.First(m => m.Value == DateTime.Now.Month).Key;
     [ObservableProperty] private int _selectedYear = DateTime.Now.Year;
-    [ObservableProperty] private double _cubicMeterConsumed; // TODO: int -> double
-    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m; // TODO: Correct price
+    [ObservableProperty] private double _cubicMeterConsumed;
+    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
 
     [RelayCommand]
     private async Task Add()
@@ -39,7 +39,6 @@ public partial class AddViewModel(NotesService notesService) : ObservableObject
 
     private void ChangeMonthAndYear()
     {
-        //var monthNumber = _months.First(m => m.Key.Equals(SelectedMonth)).Value; // TODO: Test this
         var monthNumber = _months[SelectedMonth];
         if (monthNumber == 12)
         {
