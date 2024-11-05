@@ -8,7 +8,7 @@ namespace NaturalGasApp.Services.Charting;
 public class ChartsService
 {
     private readonly ObservableCollection<decimal> _amountsToPayValues = [];
-    private readonly ObservableCollection<int> _cubicMeterConsumed = [];
+    private readonly ObservableCollection<double> _cubicMeterConsumed = [];
     private readonly ObservableCollection<string> _dateLabels = [];
 
     public void AddValues(NaturalGasConsumption consumption)

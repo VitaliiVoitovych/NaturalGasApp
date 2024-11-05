@@ -5,7 +5,7 @@ namespace NaturalGasApp.Models;
 
 public record NaturalGasConsumption(
     DateOnly Date,
-    int CubicMeterConsumed,
+    double CubicMeterConsumed,
     decimal AmountToPay)
 {
     [Key, JsonIgnore]
