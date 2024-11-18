@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NaturalGasApp.EfStructures;
+using NaturalGasApp.Exceptions;
 using NaturalGasApp.Extensions;
 using NaturalGasApp.Services.Charting;
 
@@ -57,8 +58,7 @@ public partial class NotesService : ObservableObject
     
     public void AddNote(NaturalGasConsumption consumption)
     {
-        if ( NaturalGasConsumptions.Any(r => EqualsYearAndMonth(r.Date, consumption.Date)))
-            throw new ArgumentException("A note for this month already exists");
+        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(NaturalGasConsumptions, consumption);
 
         var index = NaturalGasConsumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
         NaturalGasConsumptions.Insert(index, consumption);
@@ -78,11 +78,6 @@ public partial class NotesService : ObservableObject
         _dbContext.SaveChanges();
 
         UpdateAverageValues();
-    }
-
-    private static bool EqualsYearAndMonth(DateOnly date1, DateOnly date2)
-    {
-        return (date1.Year, date1.Month) == (date2.Year, date2.Month);
     }
 
     private void UpdateAverageValues()

@@ -1,4 +1,6 @@
-﻿namespace NaturalGasApp.ViewModels;
+﻿using NaturalGasApp.Exceptions;
+
+namespace NaturalGasApp.ViewModels;
 
 public partial class AddViewModel(NotesService notesService) : ObservableObject
 {
@@ -11,7 +13,7 @@ public partial class AddViewModel(NotesService notesService) : ObservableObject
 
     public List<string> Months => [.. _months.Keys];
 
-    public List<int> Years => [.. Enumerable.Range(DateTime.Now.Year - 5, 20)];
+    public List<int> Years => [.. Enumerable.Range(DateTime.Now.Year - 5, 6)];
     
     [ObservableProperty] private string _selectedMonth = _months.First(m => m.Value == DateTime.Now.Month).Key;
     [ObservableProperty] private int _selectedYear = DateTime.Now.Year;
@@ -23,18 +25,22 @@ public partial class AddViewModel(NotesService notesService) : ObservableObject
     {
         var amountToPay = Convert.ToDecimal(CubicMeterConsumed) * CubicMeterPrice;
 
-        var consumption = new NaturalGasConsumption(new DateOnly(SelectedYear, _months[SelectedMonth], 1),
+        var consumption = new NaturalGasConsumption(new DateOnly(SelectedYear, _months[SelectedMonth], DateTime.Now.Day),
             CubicMeterConsumed, amountToPay);
         try
         {
+            InvalidConsumptionDataException.ThrowIfDateInvalid(consumption);
             notesService.AddNote(consumption);
             ChangeMonthAndYear();
         }
-        catch (ArgumentException)
+        catch (DuplicateConsumptionNoteException)
         {
             await Shell.Current.DisplayAlert("Помилка!", "Запис про цей місяць вже є", "Зрозуміло");
         }
-        
+        catch (InvalidConsumptionDataException)
+        {
+            await Shell.Current.DisplayAlert("Помилка!", "Не можна додавати запис \r\nпро поточний чи майбутній місяць", "Зрозуміло");
+        }
     }
 
     private void ChangeMonthAndYear()
