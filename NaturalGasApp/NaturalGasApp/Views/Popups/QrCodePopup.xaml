@@ -21,7 +21,7 @@
                 Spacing="15">
                 
                 <Label
-                    Text="Поділитися застосунком"
+                    x:Name="Title"
                     FontSize="24"
                     FontAttributes="Bold"
                     HorizontalTextAlignment="Center"

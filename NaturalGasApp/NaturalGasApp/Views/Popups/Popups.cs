@@ -6,7 +6,7 @@ public static class Popups
 {
     public static QrCodePopup GetShareAppQrCodePopup()
     {
-        var qrCodePopup = new QrCodePopup(QrCodes.ShareAppQrCode);
+        var qrCodePopup = new QrCodePopup("Поділитися застосунком", QrCodes.ShareAppQrCode);
 
         return qrCodePopup;
     }

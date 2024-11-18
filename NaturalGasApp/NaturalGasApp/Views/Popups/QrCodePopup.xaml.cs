@@ -4,9 +4,10 @@ namespace NaturalGasApp.Views.Popups;
 
 public partial class QrCodePopup : Popup
 {
-	public QrCodePopup(ImageSource qrCode)
+	public QrCodePopup(string title, ImageSource qrCode)
 	{
 		InitializeComponent();
+        Title.Text = title;
         QrCodeImage.Source = qrCode;
 	}
 
