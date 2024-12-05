@@ -38,17 +38,17 @@
         
         <Label
             Text="Спожито м³"/>
-        <controls:NumberBox
+        <controls:StepperWithInput
             Value="{Binding CubicMeterConsumed, Mode=TwoWay}"
             Minimum="0"
             Maximum="10000"
             Increment=".01"/>
-        
+
         <Label
             Text="Ціна за м³"/>
-        <controls:NumberBox
+        <controls:StepperWithInput
             Value="{Binding CubicMeterPrice, Mode=TwoWay}"
-            Minimum="0.01"
+            Minimum="0.0"
             Maximum="100"
             Increment=".01"/>
         
