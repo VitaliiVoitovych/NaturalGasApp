@@ -18,8 +18,7 @@ public partial class NotesViewModel(NotesService notesService, FileService fileS
     [RelayCommand]
     private async Task ShowQrCodePopup()
     {
-        var shareAppQrCodePopup = Popups.GetShareAppQrCodePopup();
-        await Shell.Current.ShowPopupAsync(shareAppQrCodePopup);
+        await Shell.Current.ShowPopupAsync(Popups.ShareAppQrCodePopup);
     }
     
     [RelayCommand]

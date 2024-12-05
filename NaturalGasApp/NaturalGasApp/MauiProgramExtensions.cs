@@ -64,8 +64,7 @@ public static class MauiProgramExtensions
 			else
 			{
 				await Task.Delay(250);
-				var shareQrCodePopup = Popups.GetShareAppQrCodePopup();
-				await Shell.Current.ShowPopupAsync(shareQrCodePopup);
+				await Shell.Current.ShowPopupAsync(Popups.ShareAppQrCodePopup);
             }
 		});
 	}
