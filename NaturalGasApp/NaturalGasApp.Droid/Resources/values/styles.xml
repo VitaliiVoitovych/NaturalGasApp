@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="alertDialogTheme">@style/CustomDialogTheme</item>
+    <item name="popupTheme">@style/ToolbarMenuStyle</item>
+    <item name="materialButtonStyle">@style/MauiMaterialButton</item>
+  </style>
+
+  <style name="CustomDialogTheme" parent="MauiAlertDialogTheme">
+    <item name="android:textColor">@color/colorAccent</item>
+    <item name="textColorAlertDialogListItem">@color/colorAccent</item>
+    <item name="android:textColorPrimary">@color/colorAccent</item>
+    <item name="android:colorBackground">@color/colorPrimary</item>
+    <item name="buttonBarPositiveButtonStyle">@style/CustomDialogButton</item>
+    <item name="buttonBarNegativeButtonStyle">@style/CustomDialogButton</item>
+    <item name="buttonBarNeutralButtonStyle">@style/CustomDialogButton</item>
+  </style>
+
+  <style name="CustomDialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">@color/colorAccent</item>
+  </style>
+
+  <style name="ToolbarMenuStyle" parent="Theme.MaterialComponents.Light">
+    <item name="colorSurface">#0D121C</item>
+    <item name="android:textColor">@color/colorAccent</item>
+  </style>
+
+  <style name="CustomMaterialDialogStyle" parent="MauiAlertDialogTheme">
+    <item name="colorPrimary">@color/colorAccent</item>
+    <item name="colorSecondary">@color/colorAccent</item>
+    <item name="colorSurface">@color/colorPrimary</item>
+    <item name="colorOnSurface">@color/colorPrimary</item>
+    <item name="materialAlertDialogTitleTextStyle">@style/DialogTextStyle</item>
+    <item name="alertDialogStyle">@style/MaterialAlertDialog</item>
+    <item name="buttonBarPositiveButtonStyle">@style/DialogButton</item>
+    <item name="buttonBarNegativeButtonStyle">@style/DialogButton</item>
+    <item name="buttonBarNeutralButtonStyle">@style/DialogButton</item>
+  </style>
+
+  <style name="MaterialAlertDialog" parent="MaterialAlertDialog.MaterialComponents">
+    <item name="shapeAppearance">@style/CustomShape</item>
+  </style>
+
+  <style name="CustomShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">18dp</item>
+  </style>
+
+  <style name="DialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">@color/colorAccent</item>
+    <item name="shapeAppearance">@style/ShapeButton</item>
+  </style>
+
+  <style name="ShapeButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">10dp</item>
+  </style>
+
+  <style name="DialogTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+    <item name="android:textColor">@color/colorAccent</item>
+  </style>
+
+
+
+</resources>

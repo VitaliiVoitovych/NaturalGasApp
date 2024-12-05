@@ -51,5 +51,11 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
-    
+
+    <Style TargetType="controls:WheelDatePicker">
+        <Setter Property="TextColor" Value="{StaticResource Light}"/>
+        <Setter Property="UnderlineColor" Value="{StaticResource Light}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
 </ResourceDictionary>

@@ -14,6 +14,7 @@ public static class MauiProgram
 			.ConfigureMauiHandlers(handlers =>
 			{
 				handlers.AddHandler<StepperWithInput, StepperWithInputHandler>();
+				handlers.AddHandler<WheelDatePicker, WheelDatePickerHandler>();
 			})
 			.UseSharedMauiApp();
 

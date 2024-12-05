@@ -19,27 +19,22 @@
         HorizontalOptions="Center"
         VerticalOptions="Center">
         <Grid
-            ColumnDefinitions="*, 0.5*, 0.5*">
+            ColumnDefinitions="*, *">
             <Label
                 Text="Обрати місяць та рік"
                 VerticalTextAlignment="Center"/>
-            <Picker
-                Grid.Column="1"
-                Title="Місяць"
-                ItemsSource="{Binding Months}"
-                SelectedItem="{Binding SelectedMonth}"/>
 
-            <Picker
-                Grid.Column="2"
-                Title="Рік"
-                ItemsSource="{Binding Years}"
-                SelectedItem="{Binding SelectedYear}"/>
+            <controls:WheelDatePicker
+                Grid.Column="1"
+                Title="Місяць та рік"
+                IsDayVisible="False"
+                SelectedDate="{Binding SelectedDate}"/>
         </Grid>
-        
+
         <Label
             Text="Спожито м³"/>
         <controls:StepperWithInput
-            Value="{Binding CubicMeterConsumed, Mode=TwoWay}"
+            Value="{Binding CubicMeterConsumed}"
             Minimum="0"
             Maximum="10000"
             Increment=".01"/>
@@ -47,7 +42,7 @@
         <Label
             Text="Ціна за м³"/>
         <controls:StepperWithInput
-            Value="{Binding CubicMeterPrice, Mode=TwoWay}"
+            Value="{Binding CubicMeterPrice}"
             Minimum="0.0"
             Maximum="100"
             Increment=".01"/>
