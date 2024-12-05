@@ -52,37 +52,36 @@
                                 CommandParameter="{Binding .}"/>
                         </SwipeView.RightItems>
 
-                        <Frame
-                            BorderColor="{StaticResource LightDark}"
+                        <Border
+                            StrokeShape="RoundRectangle 15,15,15,15"
+                            Stroke="{StaticResource LightDark}"
                             Background="{StaticResource Dark}"
-                            CornerRadius="15"
                             Padding="10">
 
                             <Grid
                                 RowDefinitions="Auto, *"
-                                ColumnDefinitions="*, Auto"
-                                RowSpacing="5">
+                                ColumnDefinitions="Auto, *, Auto"
+                                RowSpacing="3"
+                                ColumnSpacing="3">
 
                                 <Label
+                                    Grid.ColumnSpan="2"
                                     Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}"
                                     FontAttributes="Bold"
                                     FontSize="18"
                                     TextTransform="Uppercase"/>
-                                <VerticalStackLayout
+                                <Ellipse
                                     Grid.Column="0"
                                     Grid.Row="1"
-                                    VerticalOptions="Center">
-
-                                    <HorizontalStackLayout
-                                        Padding="2"
-                                        VerticalOptions="Center"
-                                        Spacing="5">
-                                        <Label
-                                            Text="{Binding CubicMeterConsumed,
-                                                    StringFormat='Спожито: {0} м³'}"/>
-                                    </HorizontalStackLayout>
-
-                                </VerticalStackLayout>
+                                    Fill="#367fd7"
+                                    HeightRequest="16"
+                                    WidthRequest="16"/>
+                                
+                                <Label
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Text="{Binding CubicMeterConsumed,
+                                            StringFormat='Спожито: {0} м³'}"/>
                                 <Label
                                     Grid.Column="1"
                                     Grid.RowSpan="2"
@@ -93,7 +92,7 @@
                                     FontAttributes="Bold"
                                     Text="{Binding AmountToPay, StringFormat='{0:C2}'}"/>
                             </Grid>
-                        </Frame>
+                        </Border>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

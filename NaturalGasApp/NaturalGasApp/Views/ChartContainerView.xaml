@@ -4,30 +4,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              x:Class="NaturalGasApp.Views.ChartContainerView"
-             x:Name="This">
-    <Frame
+             x:Name="ChartContainer">
+    <Border
         Padding="10"
-        CornerRadius="15"
         Background="Transparent"
-        BorderColor="{StaticResource LightDark}"
-        BindingContext="{Binding Source={x:Reference This}}">
+        StrokeShape="RoundRectangle 15,15,15,15"
+        Stroke="{StaticResource LightDark}"
+        BindingContext="{Binding Source={x:Reference ChartContainer}}">
 
         <Grid
-            RowDefinitions="Auto, *">
+            RowDefinitions="Auto, Auto, *">
 
-            <VerticalStackLayout>
-                <Label
-                    Text="{Binding Text}"
-                    VerticalTextAlignment="Center"
-                    FontSize="20"/>
-                <Label
-                    Text="{Binding AverageValue}"
-                    VerticalTextAlignment="Center"
-                    FontSize="22"
-                    FontAttributes="Bold"/>
-            </VerticalStackLayout>
-            <lvc:CartesianChart
+            <Label
+                Grid.Row="0"
+                Text="{Binding Text}"
+                VerticalTextAlignment="Center"
+                FontSize="20"/>
+            <Label
                 Grid.Row="1"
+                Text="{Binding AverageValue}"
+                VerticalTextAlignment="Center"
+                FontSize="22"
+                FontAttributes="Bold"/>
+            
+            <lvc:CartesianChart
+                Grid.Row="2"
                 x:Name="Chart"
                 ZoomMode="PanX"
                 Series="{Binding Series}"
@@ -36,5 +37,5 @@
                 LegendPosition="{Binding LegendPosition}"
                 LegendTextPaint="{Binding LegendTextPaint}"/>
         </Grid>
-    </Frame>
+    </Border>
 </ContentView>

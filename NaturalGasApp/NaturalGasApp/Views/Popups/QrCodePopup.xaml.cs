@@ -9,6 +9,7 @@ public partial class QrCodePopup : Popup
 		InitializeComponent();
         Title.Text = title;
         QrCodeImage.Source = qrCode;
+        CanBeDismissedByTappingOutsideOfPopup = false;
 	}
 
     private async void Button_Clicked(object sender, EventArgs e)

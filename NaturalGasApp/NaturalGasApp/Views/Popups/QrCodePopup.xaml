@@ -10,14 +10,14 @@
         <Border
             x:Name="ContentBorder"
             Background="{StaticResource PrimaryDark}"
-            StrokeShape="RoundRectangle 12, 12, 0, 0"
+            StrokeShape="RoundRectangle 24, 24, 0, 0"
             TranslationY="500"
             Loaded="ContentBorder_Loaded">
             
             <VerticalStackLayout
                 VerticalOptions="Center"
                 Padding="10"
-                WidthRequest="350"
+                WidthRequest="550"
                 Spacing="15">
                 
                 <Label
@@ -26,15 +26,15 @@
                     FontAttributes="Bold"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"/>
-                <Frame
-                    CornerRadius="12"
+                <Border
+                    StrokeShape="RoundRectangle 12,12,12,12"
                     WidthRequest="250"
                     HeightRequest="250"
                     Padding="0">
                     
                     <Image
                         x:Name="QrCodeImage"/>
-                </Frame>
+                </Border>
                 
                 <Button
                     Text="Готово"

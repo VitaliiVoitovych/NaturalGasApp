@@ -12,4 +12,7 @@ public static class ChartPaints
         PathEffect = new DashEffect(ChartConstants.SeparatorDashPattern)
     };
     public static readonly SolidColorPaint LegendTextPaint = new(ChartColors.LegendTextColor);
+
+    public static readonly SolidColorPaint TooltipTextPaint = new(ChartColors.TooltipTextColor);
+    public static readonly SolidColorPaint TooltipBackgroundPaint = new(ChartColors.TooltipBackgroundColor);
 }

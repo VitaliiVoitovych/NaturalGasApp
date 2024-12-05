@@ -10,4 +10,7 @@ public static class ChartColors
     public static readonly SKColor LegendTextColor = SKColor.Parse("#e2e3ec");
 
     public static readonly SKColor GasSeriesColor = SKColor.Parse("#367fd7");
+
+    public static readonly SKColor TooltipTextColor = SKColor.Parse("#e2e3ec");
+    public static readonly SKColor TooltipBackgroundColor = SKColor.Parse("#0D121C");
 }

@@ -46,7 +46,7 @@
     <Style TargetType="controls:StepperWithInput">
         <Setter Property="TextColor" Value="{StaticResource Light}"/>
         <Setter Property="UnderlineColor" Value="{StaticResource Light}"/>
-        <Setter Property="ButtonBackgroundColor" Value="{StaticResource LightDark}"/>
+        <Setter Property="ButtonBackgroundColor" Value="{StaticResource MediumDark}"/>
         <Setter Property="ButtonForegroundColor" Value="{StaticResource Light}"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontAttributes" Value="Bold"/>
