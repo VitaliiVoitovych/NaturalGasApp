@@ -1,10 +1,8 @@
 ﻿using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.Logging;
 using NaturalGasApp.EfStructures;
 using NaturalGasApp.Services.Charting;
 using NaturalGasApp.Services.Files;
-using NaturalGasApp.Views.Popups;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace NaturalGasApp;
@@ -25,7 +23,6 @@ public static class MauiProgramExtensions
 			.ConfigureEssentials(essentials =>
 			{
 				essentials
-					.AddAppAction("share_app", "Поділитися", icon: "qr_action")
 					.AddAppAction("add_record", "Додати запис", icon: "add_action")
 					.OnAppAction(HandleAppActions);
 			});
@@ -52,20 +49,13 @@ public static class MauiProgramExtensions
 
 	private static void HandleAppActions(AppAction action)
 	{
-		Application.Current?.Dispatcher.Dispatch(async () =>
+		Application.Current?.Dispatcher.Dispatch(() =>
 		{
-			if (action.Id == "add_record")
-			{
-				var tabBar = Shell.Current.CurrentItem; // TabBar
-				var addTab = tabBar.Items[^1]; // Add tab is last
+			if (action.Id != "add_record") return;
+			var tabBar = Shell.Current.CurrentItem; // TabBar
+			var addTab = tabBar.Items[^1]; // Add tab is last
 
-				tabBar.CurrentItem = addTab;
-			}
-			else
-			{
-				await Task.Delay(250);
-				await Shell.Current.ShowPopupAsync(Popups.ShareAppQrCodePopup);
-            }
+			tabBar.CurrentItem = addTab;
 		});
 	}
 }
