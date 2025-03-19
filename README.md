@@ -3,12 +3,11 @@
 - Support only Android(without tablets)
 
 ## Technologies
-- .NET 8
+- .NET 9
 - MAUI
 - LiveCharts2
 - SQLite
 - Community Toolkit(Mvvm, Maui)
-- QRCoder
 
 ## License
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VitaliiVoitovych/ElectricityApp/blob/master/LICENSE.txt)
@@ -22,13 +21,14 @@
 ### Notes
 <img  src="/Screenshots/notes.jpg" width="300">
 <img  src="/Screenshots/notes2.jpg" width="300">
+<img  src="/Screenshots/notes3.jpg" width="300">
 
 ### Add
 <img  src="/Screenshots/add.jpg" width="300">
 <img  src="/Screenshots/date_picker.jpg" width="300">
 
-### QrCode Page
-<img src="/Screenshots/qr_code_popup.jpg" width="300">
+### Edit
+<img src="/Screenshots/edit.jpg" width="300">
 
 ### App Actions
 <img src="/Screenshots/app_actions.jpg" width="300">
