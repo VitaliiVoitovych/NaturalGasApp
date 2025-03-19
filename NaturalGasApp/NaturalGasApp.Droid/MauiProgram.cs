@@ -8,8 +8,6 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 
-		AddControlsHandlers();
-
 		builder
 			.ConfigureMauiHandlers(handlers =>
 			{
@@ -19,18 +17,5 @@ public static class MauiProgram
 			.UseSharedMauiApp();
 
 		return builder.Build();
-	}
-	
-	private static void AddControlsHandlers()
-	{
-		EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
-		{
-			handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.ParseColor("#e2e3ec"));
-		});
-
-		PickerHandler.Mapper.AppendToMapping(nameof(Picker), (handler, view) =>
-		{
-			handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.ParseColor("#e2e3ec"));
-		});
 	}
 }

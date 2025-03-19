@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              xmlns:views="clr-namespace:NaturalGasApp.Views"
+             xmlns:chartStyle="clr-namespace:NaturalGasApp.Services.Charting.Styles"
              x:Class="NaturalGasApp.Views.ChartContainerView"
              x:DataType="views:ChartContainerView">
     <Border
@@ -11,7 +12,7 @@
         Background="Transparent"
         StrokeShape="RoundRectangle 15,15,15,15"
         Stroke="{StaticResource LightDark}"
-        BindingContext="{Binding Source={RelativeSource AncestorType={x:Type views:ChartContainerView}, AncestorLevel=1}, Path=., x:DataType=views:ChartContainerView}">
+        BindingContext="{Binding Source={RelativeSource AncestorType={x:Type views:ChartContainerView}, AncestorLevel=1}, Path=.}">
 
         <Grid
             RowDefinitions="Auto, Auto, *">
@@ -36,7 +37,9 @@
                 XAxes="{Binding XAxes}"
                 YAxes="{Binding YAxes}"
                 LegendPosition="{Binding LegendPosition}"
-                LegendTextPaint="{Binding LegendTextPaint}"/>
+                LegendTextPaint="{x:Static chartStyle:ChartPaints.LegendTextPaint}"
+                TooltipTextPaint="{x:Static chartStyle:ChartPaints.TooltipTextPaint}"
+                TooltipBackgroundPaint="{x:Static chartStyle:ChartPaints.TooltipBackgroundPaint}"/>
         </Grid>
     </Border>
 </ContentView>

@@ -38,8 +38,7 @@
                     Series="{Binding ChartsService.CubicMeterConsumedSeries}"
                     XAxes="{Binding ChartsService.DateXAxes}"
                     YAxes="{Binding ChartsService.CubicMeterConsumedYAxes}"
-                    LegendPosition="Top"
-                    LegendTextPaint="{Binding ChartsService.LegendTextPaint}"/>
+                    LegendPosition="Top"/>
             </Grid>
         </ScrollView>
     </Grid>

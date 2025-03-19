@@ -4,15 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
              xmlns:controls="clr-namespace:NaturalGasApp.Controls"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="NaturalGasApp.Pages.EditPage"
              x:DataType="viewmodels:EditViewModel"
              Shell.PresentationMode="ModalAnimated">
-    <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior
-            StatusBarColor="{StaticResource Dark}"
-            StatusBarStyle="LightContent" />
-    </ContentPage.Behaviors>
 
     <VerticalStackLayout
         HorizontalOptions="Center"

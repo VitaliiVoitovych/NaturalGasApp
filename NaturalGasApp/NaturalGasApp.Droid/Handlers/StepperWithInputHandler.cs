@@ -33,6 +33,7 @@ public class StepperWithInputHandler : StepperHandler
         TextField = new TextInputEditText(Context)
         {
             InputType = InputTypes.ClassNumber | InputTypes.NumberFlagSigned,
+            EmojiCompatEnabled = false,
         };
         TextField.SetMinWidth((int)Context.ToPixels(120));
 

@@ -1,6 +1,5 @@
 ﻿using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.Painting;
 using NaturalGasApp.Services.Charting.Styles;
 
 namespace NaturalGasApp.Services.Charting;
@@ -67,6 +66,4 @@ public class ChartsService
             LabelsPaint = ChartPaints.AxisLabelsPaint,
         }
     ];
-
-    public SolidColorPaint LegendTextPaint => ChartPaints.LegendTextPaint;
 }

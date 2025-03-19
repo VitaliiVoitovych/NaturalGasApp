@@ -45,14 +45,14 @@
                             <SwipeItem
                                 IconImageSource="edit.png"
                                 BackgroundColor="Transparent"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NotesViewModel}, AncestorLevel=1}, Path=EditCommand, x:DataType=viewmodels:NotesViewModel}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NotesViewModel}, AncestorLevel=1}, Path=EditCommand}"
                                 CommandParameter="{Binding .}"/>
                         </SwipeView.LeftItems>
                         <SwipeView.RightItems>
                             <SwipeItem
                                 IconImageSource="cross.png"
                                 BackgroundColor="Transparent"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NotesViewModel}, AncestorLevel=1}, Path=RemoveCommand, x:DataType=viewmodels:NotesViewModel}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NotesViewModel}, AncestorLevel=1}, Path=RemoveCommand}"
                                 CommandParameter="{Binding .}"/>
                         </SwipeView.RightItems>
 

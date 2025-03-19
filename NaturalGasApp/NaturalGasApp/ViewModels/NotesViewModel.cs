@@ -31,14 +31,6 @@ public partial class NotesViewModel(NotesService notesService, FileService fileS
         await DataExporterImporter.ExportAsync(filePath, NotesService.NaturalGasConsumptions);
 
         await fileService.ShareFileAsync(filePath);
-        try
-        {
-            File.Delete(filePath);
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Помилка", ex.Message, "Зрозуміло");
-        }
     }
 
     [RelayCommand]
