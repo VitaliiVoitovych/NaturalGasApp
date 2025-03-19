@@ -10,6 +10,8 @@ public partial class AppShell : Shell
 
 		CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-Ua");
 
+		Routing.RegisterRoute(nameof(EditPage), typeof(EditPage));
+		
 		CurrentItem = PhoneTabs;
 	}
 }

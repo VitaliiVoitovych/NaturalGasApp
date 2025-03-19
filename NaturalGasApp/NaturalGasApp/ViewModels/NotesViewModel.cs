@@ -8,9 +8,18 @@ public partial class NotesViewModel(NotesService notesService, FileService fileS
     public NotesService NotesService => notesService;
 
     [RelayCommand]
-    private void Remove(NaturalGasConsumption consumption)
+    private void Remove(ObservableNaturalGasConsumption consumption)
     {
         NotesService.RemoveNote(consumption);
+    }
+
+    [RelayCommand]
+    private void Edit(ObservableNaturalGasConsumption consumption)
+    {
+        Shell.Current.GoToAsync(nameof(EditPage), true, new Dictionary<string, object>
+        {
+            { "Consumption", consumption }
+        });
     }
     
     [RelayCommand]

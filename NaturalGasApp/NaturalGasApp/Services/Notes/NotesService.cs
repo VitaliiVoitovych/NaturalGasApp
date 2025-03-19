@@ -12,14 +12,17 @@ public partial class NotesService : ObservableObject
     private readonly ChartsService _chartsService;
 
     public ChartsService ChartsService => _chartsService;
-    public ObservableCollection<NaturalGasConsumption> NaturalGasConsumptions { get; }
+    public ObservableCollection<ObservableNaturalGasConsumption> ObservableNaturalGasConsumptions { get; }
 
+    public List<NaturalGasConsumption> NaturalGasConsumptions =>
+        ObservableNaturalGasConsumptions.Select(c => c.Consumption).ToList();
+    
     [ObservableProperty] private decimal _averageAmount;
     [ObservableProperty] private double _averageCubicMeterConsumed;
     
     public NotesService(NaturalGasDbContext dbContext, ChartsService chartsService)
     {
-        NaturalGasConsumptions = [];
+        ObservableNaturalGasConsumptions = [];
         _dbContext = dbContext;
         _chartsService = chartsService;
         Task.Run(LoadDataAsync);
@@ -30,7 +33,7 @@ public partial class NotesService : ObservableObject
         var naturalGasConsumption = await _dbContext.NaturalGasConsumptions.OrderBy(n => n.Date).ToArrayAsync();
         foreach (NaturalGasConsumption consumption in naturalGasConsumption)
         {
-            NaturalGasConsumptions.Add(consumption);
+            ObservableNaturalGasConsumptions.Add(new ObservableNaturalGasConsumption(consumption));
             ChartsService.AddValues(consumption);
         }
 
@@ -42,13 +45,13 @@ public partial class NotesService : ObservableObject
         Clear();
         await foreach (var consumption in data)
         {
-            AddNote(consumption);
+            AddNote(new ObservableNaturalGasConsumption(consumption));
         }
     }
 
     public void Clear()
     {
-        var naturalGasConsumption = NaturalGasConsumptions.ToList();
+        var naturalGasConsumption = ObservableNaturalGasConsumptions.ToList();
 
         foreach (var consumption in naturalGasConsumption)
         {
@@ -56,38 +59,49 @@ public partial class NotesService : ObservableObject
         }
     }
     
-    public void AddNote(NaturalGasConsumption consumption)
+    public void AddNote(ObservableNaturalGasConsumption consumption)
     {
-        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(NaturalGasConsumptions, consumption);
+        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(NaturalGasConsumptions, consumption.Consumption);
 
-        var index = NaturalGasConsumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
-        NaturalGasConsumptions.Insert(index, consumption);
-        ChartsService.AddValues(index, consumption);
-        _dbContext.NaturalGasConsumptions.Add(consumption);
+        var index = ObservableNaturalGasConsumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
+        ObservableNaturalGasConsumptions.Insert(index, consumption);
+        ChartsService.AddValues(index, consumption.Consumption);
+        _dbContext.NaturalGasConsumptions.Add(consumption.Consumption);
         _dbContext.SaveChanges();
         UpdateAverageValues();
     }
     
-    public void RemoveNote(NaturalGasConsumption consumption)
+    public void RemoveNote(ObservableNaturalGasConsumption consumption)
     {
-        var index = NaturalGasConsumptions.IndexOf(consumption);
-        NaturalGasConsumptions.RemoveAt(index);
+        var index = ObservableNaturalGasConsumptions.IndexOf(consumption);
+        ObservableNaturalGasConsumptions.RemoveAt(index);
         ChartsService.RemoveValues(index);
 
-        _dbContext.NaturalGasConsumptions.Remove(consumption);
+        _dbContext.NaturalGasConsumptions.Remove(consumption.Consumption);
         _dbContext.SaveChanges();
 
         UpdateAverageValues();
     }
 
+    public void UpdateNote(ObservableNaturalGasConsumption consumption)
+    {
+        var index = ObservableNaturalGasConsumptions.LastMatchingIndex(c => c.Date == consumption.Date);
+        
+        _dbContext.NaturalGasConsumptions.Update(consumption.Consumption);
+        _dbContext.SaveChanges();
+        ChartsService.UpdateValues(index, consumption.Consumption);
+
+        UpdateAverageValues();
+    }
+    
     private void UpdateAverageValues()
     {
-        AverageAmount = NaturalGasConsumptions.Count > 0 
-            ? NaturalGasConsumptions.Average(n => n.AmountToPay) 
+        AverageAmount = ObservableNaturalGasConsumptions.Count > 0 
+            ? ObservableNaturalGasConsumptions.Average(n => n.AmountToPay) 
             : 0.0m;
 
-        AverageCubicMeterConsumed = NaturalGasConsumptions.Count > 0 
-            ? NaturalGasConsumptions.Average(n => n.CubicMeterConsumed) 
+        AverageCubicMeterConsumed = ObservableNaturalGasConsumptions.Count > 0 
+            ? ObservableNaturalGasConsumptions.Average(n => n.CubicMeterConsumed) 
             : 0.0;
     }
 }

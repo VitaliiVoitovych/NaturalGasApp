@@ -39,10 +39,12 @@ public static class MauiProgramExtensions
 		builder.Services.AddTransient<MainViewModel>();
 		builder.Services.AddTransient<NotesViewModel>();
 		builder.Services.AddTransient<AddViewModel>();
+		builder.Services.AddTransient<EditViewModel>();
 
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<NotesPage>();
 		builder.Services.AddTransient<AddPage>();
+		builder.Services.AddTransient<EditPage>();
 		
 		return builder;
 	}

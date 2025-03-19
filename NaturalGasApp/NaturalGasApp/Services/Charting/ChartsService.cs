@@ -32,6 +32,12 @@ public class ChartsService
         _amountsToPayValues.RemoveAt(index);
     }
 
+    public void UpdateValues(int index, NaturalGasConsumption consumption)
+    {
+        _cubicMeterConsumed[index] = consumption.CubicMeterConsumed;
+        _amountsToPayValues[index] = consumption.AmountToPay;
+    }
+    
     public IEnumerable<ISeries> AmountsToPaySeries =>
     [
         ChartUtils.CreateLineSeries(_amountsToPayValues, ChartColors.AmountToPaySeriesColor),

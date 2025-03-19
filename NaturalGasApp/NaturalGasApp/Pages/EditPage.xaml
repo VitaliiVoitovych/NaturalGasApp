@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NaturalGasApp.ViewModels"
+             xmlns:controls="clr-namespace:NaturalGasApp.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NaturalGasApp.Pages.EditPage"
+             x:DataType="viewmodels:EditViewModel"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="{StaticResource Dark}"
+            StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Label
+            FontSize="20"
+            FontAttributes="Bold"
+            Text="{Binding Consumption.Date, StringFormat='Редагування: {0:MMMM yyyy}'}" />
+
+        <Label
+            Text="Спожито м³" />
+        <controls:StepperWithInput
+            Value="{Binding CubicMeterConsumed}"
+            Minimum="0"
+            Maximum="10000"
+            Increment=".01" />
+
+        <Label
+            Text="Ціна за м³" />
+        <controls:StepperWithInput
+            Value="{Binding CubicMeterPrice}"
+            Minimum="0.0"
+            Maximum="100"
+            Increment=".01" />
+
+        <Grid
+            Margin="0,10,0,0"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="10">
+
+            <Button
+                HeightRequest="40"
+                Text="Назад"
+                Command="{Binding GoToBackCommand}" />
+            <Button
+                Grid.Column="1"
+                HeightRequest="40"
+                Text="Оновити запис"
+                Command="{Binding UpdateCommand}" />
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>
